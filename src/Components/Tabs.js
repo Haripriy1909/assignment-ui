@@ -36,7 +36,7 @@ const Tabs = () => {
   };
 
   return (
-    <div className="mt-6 bg-[#2a2b31] rounded-2xl p-6 shadow-lg font-jakarta w-full md:w-[720px] h-auto md:h-[316px]">
+    <div className="mt-6 bg-[#2a2b31] rounded-2xl p-8 shadow-lg font-jakarta w-full md:w-[720px] h-auto md:h-[316px]">
       <div className="flex bg-[#141518] rounded-2xl p-2">
         {["about", "exp", "rec"].map((tab) => (
           <button
@@ -63,3 +63,4 @@ const Tabs = () => {
 };
 
 export default Tabs;
+
