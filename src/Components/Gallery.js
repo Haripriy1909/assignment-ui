@@ -9,7 +9,7 @@ const Gallery = () => {
 
   const scrollRef = useRef(null);
 
-  
+ 
   const addImage = () => {
     const randomNum = Math.floor(Math.random() * 10000);
     const timestamp = new Date().getTime();
@@ -17,7 +17,7 @@ const Gallery = () => {
     setImages((prevImages) => [...prevImages, newImage]);
   };
 
-
+  
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = 300;
@@ -29,13 +29,13 @@ const Gallery = () => {
 
   return (
     <div className="bg-[#2a2b31] rounded-2xl shadow-lg overflow-hidden w-full md:w-[735px] h-auto md:h-[300px] p-6 font-jakarta">
-    
+   
       <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
         <h2 className="text-white bg-[#141518] py-2 rounded-md px-4 text-lg font-semibold shadow-inner">
           Gallery
         </h2>
 
-     
+        
         <div className="flex items-center gap-3">
           <button
             onClick={addImage}
@@ -61,7 +61,7 @@ const Gallery = () => {
         </div>
       </div>
 
-      
+     
       <div
         ref={scrollRef}
         className="flex overflow-x-auto space-x-4 scroll-smooth no-scrollbar p-2 mt-2"
