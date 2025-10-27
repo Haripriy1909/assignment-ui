@@ -1,79 +1,47 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const Gallery = () => {
   const [images, setImages] = useState([
-    "https://picsum.photos/id/1018/300/200",
-    "https://picsum.photos/id/1025/300/200",
-    "https://picsum.photos/id/1031/300/200",
+    "https://picsum.photos/300/200?random=1",
+    "https://picsum.photos/300/200?random=2",
+    "https://picsum.photos/300/200?random=3",
   ]);
 
-  const scrollRef = useRef(null);
-
-  
   const addImage = () => {
-    const randomNum = Math.floor(Math.random() * 1000); // random number
-    const newImage = `https://picsum.photos/300/200?random=${randomNum}`;
+   
+    const timestamp = new Date().getTime();
+    const newImage = `https://picsum.photos/300/200?random=${timestamp}`;
+
     setImages((prevImages) => [...prevImages, newImage]);
   };
 
- 
-  const scroll = (direction) => {
-    if (!scrollRef.current) return;
-    const scrollAmount = 300;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div className="bg-[#2a2b31] rounded-2xl shadow-lg overflow-hidden w-full md:w-[735px] h-auto md:h-[300px] p-7">
-     
-      <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
-        <h2 className="text-white bg-black py-3 rounded-md px-5 text-lg font-semibold">
-          Gallery
-        </h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#141518] text-white font-jakarta px-4 py-6">
+      <h1 className="text-3xl font-bold mb-6">Gallery</h1>
 
-       
-        <div className="flex items-center gap-4">
-          <button
-            onClick={addImage}
-            className="bg-black hover:bg-[#4c4d55] px-5 py-3 rounded-full text-sm font-medium text-white shadow-lg hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all"
-          >
-            + Add Image
-          </button>
-
-          <div className="flex gap-2">
-            <button
-              onClick={() => scroll("left")}
-              className="bg-black hover:bg-[#4c4d55] px-4 py-3 rounded-full text-white font-bold shadow-lg transition-all"
-            >
-              🡠
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="bg-black hover:bg-[#4c4d55] px-4 py-3 rounded-full text-white font-bold shadow-lg transition-all"
-            >
-              🡢
-            </button>
-          </div>
-        </div>
-      </div>
-
-   
-      <div
-        ref={scrollRef}
-        className="flex overflow-x-auto space-x-4 scroll-smooth no-scrollbar p-3 mt-2"
-      >
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-5xl">
         {images.map((img, index) => (
-          <img
+          <div
             key={index}
-            src={img}
-            alt={`gallery-${index}`}
-            className="rounded-xl shadow-md w-60 h-40 flex-shrink-0 transform transition-transform duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
-          />
+            className="bg-[#2a2b31] rounded-xl p-2 flex items-center justify-center shadow-md hover:scale-105 transition-transform duration-300"
+          >
+            <img
+              src={img}
+              alt={`Random ${index}`}
+              className="rounded-lg object-cover w-full h-[200px]"
+            />
+          </div>
         ))}
       </div>
+
+    
+      <button
+        onClick={addImage}
+        className="mt-8 bg-[#3a3b42] hover:bg-[#50515a] text-white font-semibold py-2 px-6 rounded-xl transition-colors duration-300"
+      >
+        + Add Image
+      </button>
     </div>
   );
 };
