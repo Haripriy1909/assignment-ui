@@ -2,9 +2,10 @@ import React, { useState, useRef } from "react";
 
 const Gallery = () => {
   const [images, setImages] = useState([
-    "https://picsum.photos/id/1018/300/200",
-    "https://picsum.photos/id/1025/300/200",
-    "https://picsum.photos/id/1031/300/200",
+   "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+"https://images.unsplash.com/photo-1503264116251-35a269479413",
+"https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+
   ]);
 
   const scrollRef = useRef(null);
@@ -75,3 +76,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
