@@ -2,20 +2,21 @@ import React, { useState, useRef } from "react";
 
 const Gallery = () => {
   const [images, setImages] = useState([
-    "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
-    "https://images.unsplash.com/photo-1503264116251-35a269479413",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "https://source.unsplash.com/random/300x200?sig=1",
+    "https://source.unsplash.com/random/300x200?sig=2",
+    "https://source.unsplash.com/random/300x200?sig=3",
   ]);
 
   const scrollRef = useRef(null);
 
+
   const addImage = () => {
-    const newImage = `https://picsum.photos/300/200?random=${Math.floor(
-      Math.random() * 1000
-    )}`;
-    setImages([...images, newImage]);
+    const timestamp = new Date().getTime(); // unique number
+    const newImage = `https://source.unsplash.com/random/300x200?sig=${timestamp}`;
+    setImages((prev) => [...prev, newImage]);
   };
 
+  
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = 300;
@@ -26,13 +27,15 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-[#2a2b31] rounded-2xl shadow-lg w-full md:w-[735px] h-auto md:h-[300px] p-7">
+    <div className="bg-[#2a2b31] rounded-2xl shadow-lg overflow-hidden w-full md:w-[735px] h-auto md:h-[300px] p-7">
+    
       <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
         <h2 className="text-white bg-black py-3 rounded-md px-5 text-lg font-semibold">
           Gallery
         </h2>
 
         <div className="flex items-center gap-4">
+        
           <button
             onClick={addImage}
             className="bg-black hover:bg-[#4c4d55] px-5 py-3 rounded-full text-sm font-medium text-white shadow-lg hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all"
@@ -40,6 +43,7 @@ const Gallery = () => {
             + Add Image
           </button>
 
+        
           <div className="flex gap-2">
             <button
               onClick={() => scroll("left")}
@@ -57,9 +61,10 @@ const Gallery = () => {
         </div>
       </div>
 
+     
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto space-x-4 scroll-smooth no-scrollbar p-3 mt-10"
+        className="flex overflow-x-auto space-x-4 scroll-smooth no-scrollbar p-3 mt-4"
       >
         {images.map((img, i) => (
           <img
