@@ -2,10 +2,9 @@ import React, { useState, useRef } from "react";
 
 const Gallery = () => {
   const [images, setImages] = useState([
-   "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
-"https://images.unsplash.com/photo-1503264116251-35a269479413",
-"https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-
+    "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+    "https://images.unsplash.com/photo-1503264116251-35a269479413",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
   ]);
 
   const scrollRef = useRef(null);
@@ -27,7 +26,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-[#2a2b31] rounded-2xl shadow-lg  overflow-hidden w-full md:w-[735px] h-auto md:h-[300px] p-7">
+    <div className="bg-[#2a2b31] rounded-2xl shadow-lg w-full md:w-[735px] h-auto md:h-[300px] p-7">
       <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
         <h2 className="text-white bg-black py-3 rounded-md px-5 text-lg font-semibold">
           Gallery
@@ -67,7 +66,7 @@ const Gallery = () => {
             key={i}
             src={img}
             alt={`gallery-${i}`}
-            className="rounded-xl  shadow-md w-60 h-40 flex-shrink-0 transform transition-transform duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+            className="rounded-xl shadow-md w-60 h-40 flex-shrink-0 transform transition-transform duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
           />
         ))}
       </div>
@@ -76,4 +75,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
